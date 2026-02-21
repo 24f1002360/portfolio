@@ -13,17 +13,17 @@ jobs:
       - name: 24f1002360@ds.study.iitm.ac.in
         run: echo "Hello, world!"
 
-      - name: Create dummy dependency folder
+      - name: Prepare dependencies
         run: |
           mkdir -p deps
-          echo "dependency file" > deps/file.txt
+          echo "dummy file" > deps/file.txt
 
       - name: Cache dependencies
-        id: cache-step
+        id: cache
         uses: actions/cache@v4
         with:
           path: deps
           key: cache-d09f9b9
 
       - name: prime-cache-d09f9b9
-        run: echo "Cache hit? ${{ steps.cache-step.outputs.cache-hit }}"
+        run: echo "Cache hit? ${{ steps.cache.outputs.cache-hit }}"
